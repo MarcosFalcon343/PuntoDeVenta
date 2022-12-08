@@ -5,13 +5,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class Archivo {
+public abstract class Lista {
 
 	public ArrayList<Object> lista;
 	private File archivo;
 	
 	//Constructor
-	public Archivo(String name){
+	public Lista(String name){
 		lista = new ArrayList<Object>();
 		archivo = new File(name);
 		crearArchivo();
@@ -27,7 +27,7 @@ public abstract class Archivo {
 		}
 	}
 	
-	public void escribirArchivo() {
+	protected void escribirArchivo() {
 		try {
 			FileWriter esc = new FileWriter(archivo);
 				for(Object nodo: lista) {
@@ -36,11 +36,10 @@ public abstract class Archivo {
 				esc.close();
 			}catch(IOException e1) {
 				System.out.println("ERROR AL SUBIR PRODUCTO" + e1.getMessage());
-			}
-			
+			}	
 	}
 	
-	public void leerArchivo() {
+	private void leerArchivo() {
 		String linea = "";
 		try {
 			BufferedReader bf = new BufferedReader(new FileReader(archivo));
@@ -58,18 +57,13 @@ public abstract class Archivo {
 	
 	//Listas
 	
-	public void agregarObjeto(Object nodo) {
+	protected void agregar(Object nodo) {
 		lista.add(nodo);
+		this.escribirArchivo();
 	}
 
-	/*
-	public String ultimoId() {
-		boolean ck = true;
-		for(Object nodo: lista) {
-			
-		}
-	}*/
 	
-	public abstract void mostrarLista();
-	public abstract void eliminarObjecto();
+	public abstract void mostrar();
+	public abstract void eliminar();
+	public abstract void actualizar();
 }
