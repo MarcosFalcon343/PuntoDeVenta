@@ -9,5 +9,6 @@
 	<classpathentry kind="src" path="Clases"/>
 	<classpathentry kind="src" path="datos"/>
 	<classpathentry kind="src" path="Librerias"/>
+	<classpathentry kind="src" path="Menus"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

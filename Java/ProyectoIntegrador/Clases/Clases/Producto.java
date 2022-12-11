@@ -1,18 +1,22 @@
+package Clases;
+import Libreria.Libreria;
+
 public class Producto {
 
 	private String IdProducto;
 	private String Nombre;
 	private String Precio;
-	private int Cantidad;
+	private String Cantidad;
 	
 	
-	public Producto(String idProducto, String nombre, String precio, int cantidad) {
+	public Producto(String idProducto, String nombre, String precio, String cantidad) {
 		super();
 		IdProducto = idProducto;
 		Nombre = nombre;
 		Precio = precio;
 		Cantidad = cantidad;
 	}
+	
 
 
 	public String getNombre() {
@@ -35,15 +39,22 @@ public class Producto {
 	}
 
 
-	public int getCantidad() {
+	public String getCantidad() {
 		return Cantidad;
 	}
 
 
-	public void setCantidad(int cantidad) {
+	public void setCantidad(String cantidad) {
 		Cantidad = cantidad;
 	}
+	
+	public void addCantidad() {
+		this.setCantidad(String.valueOf(Integer.parseInt(Cantidad) + 1));
+	}
 
+	public void removeCantidad() {
+		this.setCantidad(String.valueOf(Integer.parseInt(Cantidad) - 1));
+	}
 
 	public String getIdProducto() {
 		return IdProducto;
