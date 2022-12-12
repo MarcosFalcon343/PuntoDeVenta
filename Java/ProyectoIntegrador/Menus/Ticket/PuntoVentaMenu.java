@@ -6,18 +6,18 @@ import Clases.Producto;
 import Clases.Ticket;
 import Clases.Venta;
 import Libreria.Libreria;
+import Listas.LProductos;
 import Listas.LVenta;
 
 public class PuntoVentaMenu {
 
 	private static String[] main = {"1.-Alta","2.-Baja","3.-Inventario","4.-Pagar","5.-Cancelar venta"};
 	private static LVenta venta;
-	private static ArrayList<Producto> listado;
+	private static LProductos listado = new LProductos("productos.txt");
 	private static Ticket ticket;
 	
 	public PuntoVentaMenu(ArrayList lista) {
 		venta = new LVenta("ventas.txt");
-		listado = lista;
 		ticket = new Ticket(Libreria.idFormat(venta.sigID()),Libreria.Fecha());
 	}
 
@@ -48,7 +48,7 @@ public class PuntoVentaMenu {
 			}
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("ERROR. LLAMA A SOPORTE TECNICO " +e.getMessage());
 		}
 	}
 	
@@ -60,11 +60,9 @@ public class PuntoVentaMenu {
 			this.mostrarInventario();
 			id = Libreria.leerDato("INGRESE EL ID DEL PRODUCTO A INSERTAR");
 			producto = this.obtener(id);
-			producto.setCantidad("1");
-			//System.out.println(producto);
 			ticket.insertar(producto);
 		}catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("ERROR. LLAMA A SOPORTE TECNICO " +e.getMessage());
 		}
 	}
 	
@@ -77,37 +75,33 @@ public class PuntoVentaMenu {
 				ticket.remover(id);
 			}else System.out.println("NO HAY NINGUN PRODUCTO, AGREGUE UNO");;
 		}catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("ERROR. LLAMA A SOPORTE TECNICO " +e.getMessage());
 		}
 	}
 	
 	private void mostrarInventario() {
 		System.out.println("PRODUCTOS");
-		for(Producto nodo: listado) {
-			System.out.println(nodo);
-		}
+		listado.mostrarT();
 		System.out.println("\n");
 	}
 	
 	private void pagar() {
 		ArrayList<Producto> productos = ticket.getProductos();
 		try {
-			for(Producto nodo: productos) {
-				venta.insertar(new Venta(ticket.getFecha(),ticket.getIdTicket(),nodo.getIdProducto(),nodo.getPrecio(),nodo.getCantidad()));
+			if(productos.size() >0) {
+				for(Producto nodo: productos) {
+					venta.insertar(new Venta(ticket.getFecha(),ticket.getIdTicket(),nodo.getIdProducto(),nodo.getPrecio(),nodo.getCantidad()));
+				}
+			}else {
+				System.out.println("CANCELANDO COMPRA");
 			}
 		}catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("ERROR. LLAMA A SOPORTE TECNICO " +e.getMessage());
 		}
 	}
 	
 	private Producto obtener(String id) {
-		int i = 0;
-		int pos = -1;
-		for(Producto nodo: listado) {
-			if((nodo).getIdProducto().equals(id)) pos = i;
-			i++;
-		}
-		return listado.get(pos);
+		return listado.obtener(id);
 	}
 	
 	

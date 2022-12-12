@@ -24,7 +24,7 @@ public abstract class Lista {
 		try {
 			archivo.createNewFile();
 		}catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("ERROR. LLAMA A SOPORTE TECNICO " +e.getMessage());
 		}
 	}
 	
@@ -33,7 +33,8 @@ public abstract class Lista {
 			FileWriter esc = new FileWriter(archivo);
 				for(Object nodo: lista) {
 					if(nodo instanceof Producto) esc.write(((Producto) nodo).txt());
-					if(nodo instanceof Venta) esc.write(((Venta)nodo).txt());
+					else if(nodo instanceof Venta) esc.write(((Venta)nodo).txt());
+					else if(nodo instanceof Almacen) esc.write(((Almacen)nodo).txt());
 				}
 				esc.close();
 			}catch(IOException e1) {
@@ -41,18 +42,21 @@ public abstract class Lista {
 			}	
 	}
 	
-	private void leerArchivo() {
+	public void leerArchivo() {
 		String linea = "";
+		ArrayList<Object> objetos = new ArrayList<Object>();
 		try {
 			BufferedReader bf = new BufferedReader(new FileReader(archivo));
 			while(linea != null) {
 				linea = bf.readLine();
 				if(linea != null) {
 					String[] cadena = linea.split(",");
-					if(cadena.length == 4) lista.add(new Producto(cadena[0],cadena[1],cadena[2],cadena[3]));
-					else if(cadena.length == 8) lista.add(new Venta(cadena[0],cadena[1],cadena[2],cadena[3],cadena[4]));
+					if(cadena.length == 4) objetos.add(new Producto(cadena[0],cadena[1],cadena[2],cadena[3]));
+					else if(cadena.length == 8) objetos.add(new Venta(cadena[0],cadena[1],cadena[2],cadena[3],cadena[4]));
+					else if(cadena.length == 7) objetos.add(new Almacen(cadena[0],cadena[1],cadena[2],cadena[3],cadena[4],cadena[5],cadena[6]));
 				}
 			}
+		lista = objetos;
 		}catch(IOException e) {
 			System.out.println(e.getMessage());
 		}

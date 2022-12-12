@@ -1,0 +1,7 @@
+C:\Users\Marcos\Documents\GitHub\PuntoDeVenta\C#\ProyectoIntegradorCSHARP\ProyectoIntegradorCSHARP\obj\Debug\ProyectoIntegradorCSHARP.csproj.AssemblyReference.cache
+C:\Users\Marcos\Documents\GitHub\PuntoDeVenta\C#\ProyectoIntegradorCSHARP\ProyectoIntegradorCSHARP\obj\Debug\ProyectoIntegradorCSHARP.csproj.CoreCompileInputs.cache
+C:\Users\Marcos\Documents\GitHub\PuntoDeVenta\C#\ProyectoIntegradorCSHARP\ProyectoIntegradorCSHARP\bin\Debug\ProyectoIntegradorCSHARP.exe.config
+C:\Users\Marcos\Documents\GitHub\PuntoDeVenta\C#\ProyectoIntegradorCSHARP\ProyectoIntegradorCSHARP\bin\Debug\ProyectoIntegradorCSHARP.exe
+C:\Users\Marcos\Documents\GitHub\PuntoDeVenta\C#\ProyectoIntegradorCSHARP\ProyectoIntegradorCSHARP\bin\Debug\ProyectoIntegradorCSHARP.pdb
+C:\Users\Marcos\Documents\GitHub\PuntoDeVenta\C#\ProyectoIntegradorCSHARP\ProyectoIntegradorCSHARP\obj\Debug\ProyectoIntegradorCSHARP.exe
+C:\Users\Marcos\Documents\GitHub\PuntoDeVenta\C#\ProyectoIntegradorCSHARP\ProyectoIntegradorCSHARP\obj\Debug\ProyectoIntegradorCSHARP.pdb

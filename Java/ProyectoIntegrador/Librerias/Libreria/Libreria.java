@@ -27,6 +27,7 @@ public class Libreria {
     public static String separador(char sep, int cant) {
     	String separador = "";
     	for(int i = 0; i < cant; i++) separador+=sep;
+    	separador+="\n";
     	return separador;
     }
     

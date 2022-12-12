@@ -1,6 +1,7 @@
 package Clases;
 
 import java.util.ArrayList;
+import Libreria.Libreria;
 
 public class Ticket implements ICuenta{
 
@@ -16,7 +17,9 @@ public class Ticket implements ICuenta{
 	
 	public void insertar(Producto producto) {
 		try {
-			if(existe(producto.getIdProducto(),1).equals("-1")) productos.add(producto);
+			Producto p = producto;
+			p.setCantidad("1");
+			if(existe(producto.getIdProducto(),1).equals("-1")) productos.add(p);
 		}catch(Exception e) {
 			
 		}
@@ -38,8 +41,8 @@ public class Ticket implements ICuenta{
 			if(p.getIdProducto().equals(id)) {
 				pos = i;
 				switch(tipo) {
-				case 1: productos.get(pos).addCantidad(); break;
-				case 2: productos.get(pos).removeCantidad(); break;
+				case 1: productos.get(pos).addCantidad(1); break;
+				case 2: productos.get(pos).removeCantidad(1); break;
 				}
 			}
 			i++;
@@ -50,17 +53,21 @@ public class Ticket implements ICuenta{
 	
 	//Visuales
 	public String ticket() {
-		String ticket = "IDTICKET: " + this.idTicket;
+		int cant = 100;
+		String ticket = Libreria.separador('_', cant) + "IDTICKET: " + this.idTicket;
 		ticket = ticket + "\nFECHA: " + this.fecha + "\n";
+		ticket += Libreria.separador('-', cant);
 		ticket += this.mostrarProductos();
-		ticket += "\nSUBTOTAL: " + this.subtotal();
+		ticket += "\n" + Libreria.separador('-', cant);
+		ticket += "SUBTOTAL: " + this.subtotal();
 		ticket += "\nIVA: " + this.IVA();
 		ticket += "\nTOTAL: " + this.total();
+		ticket += "\n" + Libreria.separador('_', cant);
 		return ticket;
 	}
 	
 	public String mostrarProductos() {
-		String producto = "";
+		String producto = Libreria.rellenarespacios("ID", 5) + " " +Libreria.rellenarespacios("NOMBRE", 60) + " " + Libreria.rellenarespacios("PRECIO", 6) + " " + Libreria.rellenarespacios("CANT", 4)+ "\n";
 		if(productos.size() > 0)	for(Producto p: productos)	producto += p.toString() + "\n";
 		else producto = "NO HAY NINGUN PRODUCTO AGREGADO";
 		

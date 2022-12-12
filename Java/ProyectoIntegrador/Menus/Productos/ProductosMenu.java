@@ -39,7 +39,7 @@ public class ProductosMenu {
 			}while(op.compareTo("5")!=0);
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("ERROR. LLAMA A SOPORTE TECNICO " +e.getMessage());
 		}
 	}
 	
@@ -57,7 +57,7 @@ public class ProductosMenu {
 			else System.out.println("ERROR AL INGRESAR LOS DATOS");
 			
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("ERROR. LLAMA A SOPORTE TECNICO " +e.getMessage());
 		}
 	}
 	
@@ -68,7 +68,7 @@ public class ProductosMenu {
 			id = Libreria.leerDato("INGRESE EL ID CORRESPONDIENTE AL PRODUCTO A ELIMINAR");
 			listado.eliminar(id);
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("ERROR. LLAMA A SOPORTE TECNICO " +e.getMessage());
 		}
 	}
 	
@@ -80,7 +80,7 @@ public class ProductosMenu {
 			precio = Libreria.leerDato("INGRESE EL NUEVO PRECIO");
 			if(Libreria.evaluarNumerico(precio, 1))	if(!listado.actualizar(idProducto, precio)) System.out.println("EL PRODUCTO NO EXISTE");
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("ERROR. LLAMA A SOPORTE TECNICO " +e.getMessage());
 		}
 	}
 

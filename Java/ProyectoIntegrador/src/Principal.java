@@ -1,12 +1,16 @@
 import Libreria.Libreria;
 import Listas.LProductos;
+import Productos.AlmacenMenu;
 import Productos.ProductosMenu;
+import Reportes.ReportesMenu;
 import Ticket.PuntoVentaMenu;
 
 public class Principal {
 	
-	private static String[] main = {"MENU PRINCIPAL\n","1.-PRODUCTOS","2.-PUNTO DE VENTA","3.-REPORTES DE VENTA","4.-SALIDA"};
+	private static String[] main = {"MENU PRINCIPAL\n","1.-PRODUCTOS","2.-PUNTO DE VENTA","3.-ALMACEN","4.-REPORTES DE VENTA","5.-SALIDA"};
 	private static ProductosMenu PMenu;
+	private static AlmacenMenu AMenu;
+	private static ReportesMenu RMenu;
 	
 	public static void main(String[] args) {
 		String op = "0";
@@ -25,17 +29,23 @@ public class Principal {
 					VMenu.PuntoVentaMain();
 					break;
 				case "3":
+					AMenu.AlmacenMain(PMenu.getListado());
+					break;
+				case "4":
+					RMenu.ReportesMain();
 					break;
 				default:
 					break;
 				}
-			}while(op.compareTo("4")!=0);
+			}while(op.compareTo("5")!=0);
 		}catch(Exception e) {
-			
+			System.out.println("ERROR. LLAMA A SOPORTE TECNICO" +e.getMessage());
 		}
 	}
 	
 	public static void inicializar() {
 		PMenu = new ProductosMenu();
+		AMenu = new AlmacenMenu();
+		RMenu = new ReportesMenu();
 	}
 }

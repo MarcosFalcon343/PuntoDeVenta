@@ -48,12 +48,12 @@ public class Producto {
 		Cantidad = cantidad;
 	}
 	
-	public void addCantidad() {
-		this.setCantidad(String.valueOf(Integer.parseInt(Cantidad) + 1));
+	public void addCantidad(int cant) {
+		this.setCantidad(String.valueOf(Integer.parseInt(Cantidad) + cant));
 	}
 
-	public void removeCantidad() {
-		this.setCantidad(String.valueOf(Integer.parseInt(Cantidad) - 1));
+	public void removeCantidad(int cant) {
+		this.setCantidad(String.valueOf(Integer.parseInt(Cantidad) - cant));
 	}
 
 	public String getIdProducto() {
@@ -66,7 +66,7 @@ public class Producto {
 
 	@Override
 	public String toString() {
-		return Libreria.rellenarespacios(getIdProducto(), 5) + " " +Libreria.rellenarespacios(getNombre(), 60) + " " + Libreria.rellenarespacios(getPrecio(), 6) + " " + Cantidad;
+		return Libreria.rellenarespacios(getIdProducto(), 5) + " " +Libreria.rellenarespacios(getNombre(), 60) + " " + Libreria.rellenarespacios(getPrecio(), 6) + " " + Libreria.rellenarespacios(Cantidad, 4);
 	}
 	
 	

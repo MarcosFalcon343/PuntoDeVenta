@@ -1,4 +1,6 @@
 package Clases;
+
+import Libreria.Libreria;
 public class Venta implements ICuenta{
 
 	//Fecha, idTicket, idProducto, Precio, Cantidad, subtotal, Iva, Total
@@ -39,6 +41,11 @@ public class Venta implements ICuenta{
 	//Fecha, idTicket, idProducto, Precio, Cantidad, subtotal, Iva, Total
 	public String txt() {
 		return this.getFecha() + "," + this.getIdTicket() + "," + this.getIdProducto() + "," + this.getPrecio() + "," + this.getCantidad() + "," + this.subtotal() + "," + this.IVA() + "," + this.total() +"\n";
+	}
+	
+	public String toString() {
+		
+		return Libreria.rellenarespacios(this.idTicket, 5) + Libreria.rellenarespacios(idProducto, 5) + Libreria.rellenarespacios(precio, 6) + Libreria.rellenarespacios(cantidad, 4) + Libreria.rellenarespacios(this.subtotal(), 5) + Libreria.rellenarespacios(this.IVA(), 5) + Libreria.rellenarespacios(this.total(), 5); 
 	}
 	
 	@Override
