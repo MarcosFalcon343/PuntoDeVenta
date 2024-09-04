@@ -20,6 +20,7 @@ namespace ProyectoIntegradorCSHARP.Menus
 		public void ReportesMain()
 		{
 			String op = "0";
+			ventas.leerArchivo();
 			try
 			{
 				while (op.CompareTo("4") != 0)

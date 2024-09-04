@@ -34,6 +34,7 @@ namespace ProyectoIntegradorCSHARP.Listas
 			productos.actualizarC(producto.getIdProducto(), sN);
 
 			this.agregar(sell);
+			this.escribirArchivo();
 		}
 
 		public String sigID()

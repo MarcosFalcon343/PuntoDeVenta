@@ -14,6 +14,7 @@ public class ReportesMenu {
 
 	public void ReportesMain() {
 		String op = "0";
+		ventas.leerArchivo();
 		try {
 			while(op.compareTo("4")!=0){
 				op = Libreria.leerDato(Libreria.mostrarMenu(main));

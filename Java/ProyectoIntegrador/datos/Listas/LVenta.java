@@ -73,9 +73,10 @@ public class LVenta extends Lista{
 	}
 
 	public void mostrarF() {
-		int pos = 0;
+		int pos = 1;
 		for(String nodo: fechas) {
-			System.out.println((pos + 1) + "  " + nodo);
+			System.out.println((pos) + "  " + nodo);
+                        pos++;
 		}
 	}
 	
